@@ -12,7 +12,7 @@ The main design choice is separation of concerns. Core services stay on the Prox
 
 ![Homelab architecture](assets/architecture.svg)
 
-The WTR Pro runs Proxmox VE and hosts the main services as LXC containers together with Home Assistant and Frigate. Storage is a two-disk ZFS mirror on Samsung 870 QVO SSDs. The home LAN is provided by Fritz!Box and NextDNS, and management stays on the internal network.
+The Proxmox host runs Proxmox VE and hosts the main services as LXC containers together with Home Assistant and Frigate. Storage is a two-disk ZFS mirror on Samsung 870 QVO SSDs. The home LAN is provided by Fritz!Box and NextDNS, and management stays on the internal network.
 
 The separate Pop!_OS media PC serves Gemma 4 through Ollama, Open WebUI, and SearXNG on the LAN. This keeps local AI workloads off the Proxmox host while still making them available across the home network.
 
@@ -26,7 +26,7 @@ The Windows 11 workstation serves as the maintainer console. It uses WSL2 for th
 
 ## Core Services
 
-The Proxmox host runs Nginx Proxy Manager, Immich, Paperless-ngx, Uptime Kuma, Homepage, and Beszel in LXC containers. Home Assistant runs as VM 150, and Frigate covers the camera and automation side of the stack. The storage layer is a ZFS mirror on two Samsung 870 QVO drives.
+The Proxmox host runs Nginx Proxy Manager, Immich, Paperless-ngx, Uptime Kuma, Homepage, and Beszel in LXC containers. Home Assistant runs as a virtual machine, and Frigate covers the camera and automation side of the stack. The storage layer is a ZFS mirror on two Samsung 870 QVO drives.
 
 The separate Pop!_OS system serves Gemma 4 through Ollama, with Open WebUI and SearXNG as the user-facing layer and search backend.
 
