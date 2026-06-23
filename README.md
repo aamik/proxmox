@@ -22,7 +22,7 @@ The separate Pop!_OS media PC serves Gemma 4 through Ollama, Open WebUI, and Sea
 
 ## Workstation
 
-The Windows 11 workstation is used for administration through WSL2 and a shell-based maintenance workflow.
+The Windows 11 workstation is used for administration through WSL2, with an agent harness, API access, local models, and a shell-based maintenance workflow.
 
 ## Core Services
 

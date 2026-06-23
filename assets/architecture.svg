@@ -29,8 +29,8 @@
   <text class="label" x="140" y="258">Windows 11 workstation</text>
   <text class="small" x="140" y="284">WSL2 administration workflow</text>
   <rect class="panel" x="122" y="291" width="291" height="46"/>
-  <text class="tiny" x="146" y="309">Maintenance tools</text>
-  <text class="tiny" x="146" y="326">shell tooling and notes</text>
+  <text class="tiny" x="146" y="309">Agent harness with API</text>
+  <text class="tiny" x="146" y="326">local models and shell tools</text>
 
   <rect class="active" x="470" y="225" width="285" height="94"/>
   <text class="label" x="510" y="258">LAN clients</text>
@@ -103,6 +103,7 @@
   <path class="line" d="M1030 334 L1030 360 L90 360"/>
   <path class="line" d="M268 351 L268 360 L90 360"/>
   <path class="line" d="M613 319 L613 360 L90 360"/>
+  <path class="line" d="M90 360 L90 455 L100 455"/>
   <path class="line" d="M90 360 L90 985 L370 985"/>
 
   <path class="line" d="M400 514 L435 514"/>
