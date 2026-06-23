@@ -22,7 +22,7 @@ The separate Pop!_OS media PC serves Gemma 4 through Ollama, Open WebUI, and Sea
 
 ## Workstation
 
-The Windows 11 workstation serves as the maintainer console. It uses WSL2 for the agent toolchain, shell automation, and the Proxmox maintenance workflow. A customized agent harness and runbook notes live there for day-to-day management.
+The Windows 11 workstation is used for administration through WSL2 and a shell-based maintenance workflow.
 
 ## Core Services
 

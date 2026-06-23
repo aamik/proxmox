@@ -27,10 +27,10 @@
 
   <rect class="active" x="100" y="225" width="335" height="126"/>
   <text class="label" x="140" y="258">Windows 11 workstation</text>
-  <text class="small" x="140" y="284">WSL2, agent tooling, Proxmox runbooks</text>
+  <text class="small" x="140" y="284">WSL2 administration workflow</text>
   <rect class="panel" x="122" y="291" width="291" height="46"/>
-  <text class="tiny" x="146" y="309">Maintainer agent</text>
-  <text class="tiny" x="146" y="326">customized harness via git</text>
+  <text class="tiny" x="146" y="309">Maintenance tools</text>
+  <text class="tiny" x="146" y="326">shell tooling and notes</text>
 
   <rect class="active" x="470" y="225" width="285" height="94"/>
   <text class="label" x="510" y="258">LAN clients</text>
@@ -93,7 +93,7 @@
   <text class="tiny" x="1062" y="693">feeds the home automation layer</text>
 
   <rect class="infra" x="1360" y="455" width="315" height="269"/>
-  <text class="label" x="1400" y="492">ZFS pool: allas</text>
+  <text class="label" x="1400" y="492">ZFS mirrored storage</text>
   <text class="small" x="1400" y="518">2x Samsung 870 QVO mirror</text>
   <text class="tiny" x="1400" y="548">Primary storage</text>
   <text class="tiny" x="1400" y="574">No active L2ARC or SLOG</text>
