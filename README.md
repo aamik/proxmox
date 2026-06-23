@@ -2,6 +2,12 @@
 
 This project documents a small production homelab centered on a Proxmox VE host and a separate Pop!_OS media workstation for local AI. The design goal is a stable, low-noise home platform with clear service boundaries, simple storage, and maintenance that can be repeated without guesswork.
 
+## Purpose
+
+This setup gives me a single home platform for file services, photo management, document handling, monitoring, home automation, and local AI. It replaces ad hoc machines with a compact Proxmox-based system that is easier to maintain, easier to back up, and easier to describe in professional terms.
+
+For me, the main value is reliability: core services stay on one well-defined host, storage stays simple, and the LAN remains internal. The separate Pop!_OS machine handles local AI so the hypervisor is not carrying those workloads.
+
 ## Architecture
 
 ![Homelab architecture](assets/architecture.svg)
@@ -45,9 +51,3 @@ The Windows 11 workstation is the maintainer console. It uses WSL2 for the agent
 - Fritz!Box and NextDNS provide the LAN core
 - Proxmox remains LAN-only
 - Services are exposed through the internal reverse proxy, not the public internet
-
-## Operational Notes
-
-- Update Proxmox conservatively with `apt dist-upgrade`, then reboot only when the kernel or PVE stack changes.
-- Keep the storage layout simple: no active L2ARC or SLOG, only the mirrored QVO pool.
-- Apply container updates selectively and keep the stack LAN-only.
