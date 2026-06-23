@@ -1,12 +1,12 @@
 # Proxmox Homelab and Local AI Stack
 
-This project documents a small production homelab centered on a Proxmox VE host and a separate Pop!_OS media workstation for local AI. The design goal is a stable, low-noise home platform with clear service boundaries, simple storage, and maintenance that can be repeated without guesswork.
+This project documents a compact home infrastructure built around Proxmox VE and a separate Pop!_OS workstation for local AI. It is designed to keep the important parts of the home network in one place, with clear boundaries between storage, virtual machines, containers, and the AI node.
 
 ## Purpose
 
-This setup gives me a single home platform for file services, photo management, document handling, monitoring, home automation, and local AI. It replaces ad hoc machines with a compact Proxmox-based system that is easier to maintain, easier to back up, and easier to describe in professional terms.
+It gives me one documented platform for file services, photo management, document handling, monitoring, home automation, and local AI. Instead of several loosely connected machines, the setup behaves like a small internal service environment that is easier to understand, maintain, and explain.
 
-For me, the main value is reliability: core services stay on one well-defined host, storage stays simple, and the LAN remains internal. The separate Pop!_OS machine handles local AI so the hypervisor is not carrying those workloads.
+The practical benefit is stability. Core services stay on a single Proxmox host, storage stays simple, and the AI workload stays on a separate machine so the hypervisor only carries infrastructure duties.
 
 ## Architecture
 
@@ -24,27 +24,11 @@ The separate Pop!_OS media PC serves Gemma 4 through Ollama, Open WebUI, and Sea
 
 The Windows 11 workstation is the maintainer console. It uses WSL2 for the agent toolchain, shell automation, and the Proxmox maintenance workflow. A customized agent harness and runbook notes live there for day-to-day management.
 
-## What Runs Where
+## Core Services
 
-### Proxmox VE host: WTR Pro
+The Proxmox host runs Nginx Proxy Manager, Immich, Paperless-ngx, Uptime Kuma, Homepage, and Beszel in LXC containers. Home Assistant runs as VM 150, and Frigate is part of the camera and automation side of the stack. The storage layer is a ZFS mirror on two Samsung 870 QVO drives.
 
-- `CT 101`: Nginx Proxy Manager
-- `CT 102`: Immich
-- `CT 103`: Paperless-ngx
-- `CT 110`: Uptime Kuma
-- `CT 111`: Homepage
-- `CT 113`: Beszel
-- `VM 150`: Home Assistant OS
-- `Frigate`: NVR layer for camera recording and automation integration
-- `Proxmox Backup Server`: planned backup target
-- `pool`: ZFS mirror on two Samsung 870 QVO SSDs
-
-### Separate media PC
-
-- Pop!_OS workstation
-- Gemma 4 served through Ollama
-- Open WebUI exposed on the LAN
-- SearXNG for search integration
+The separate Pop!_OS system serves Gemma 4 through Ollama, with Open WebUI and SearXNG as the user-facing layer and search backend.
 
 ### Network
 

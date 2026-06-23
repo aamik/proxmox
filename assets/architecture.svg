@@ -8,7 +8,6 @@
       .service { fill: #1f2937; stroke: #94a3b8; stroke-width: 2; rx: 16; ry: 16; }
       .active { fill: #083344; stroke: #22d3ee; stroke-width: 2; rx: 16; ry: 16; }
       .infra { fill: #111827; stroke: #a78bfa; stroke-width: 2.5; rx: 18; ry: 18; }
-      .planned { fill: #1f2937; stroke: #fb923c; stroke-width: 2; rx: 18; ry: 18; }
       .popos { fill: #1f140b; stroke: #fb923c; stroke-width: 2.5; rx: 18; ry: 18; }
       .title { fill: #f8fafc; font: 700 34px Inter, ui-sans-serif, system-ui, sans-serif; }
       .subtitle { fill: #cbd5e1; font: 500 17px Inter, ui-sans-serif, system-ui, sans-serif; }
@@ -113,12 +112,6 @@
   <path class="line" d="M1330 665 L1360 665"/>
 
   <path class="line" d="M1182 574 L1182 606"/>
-
-  <rect class="planned" x="100" y="595" width="300" height="102"/>
-  <text class="label" x="135" y="632">Proxmox Backup Server</text>
-  <text class="small" x="135" y="658">planned backup target</text>
-
-  <path class="line" d="M400 646 L435 646"/>
 
   <rect class="popos" x="100" y="925" width="540" height="120"/>
   <text class="label" x="135" y="959">Pop!_OS media PC</text>
