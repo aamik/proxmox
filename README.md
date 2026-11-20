@@ -1,37 +1,37 @@
-# Proxmox Homelab and Local AI Stack
+# Proxmox Homelab: Services, Storage & Recovery
 
-This repository documents a compact home infrastructure built around Proxmox VE and a separate Pop!_OS workstation for local AI. The goal is a stable internal platform with clear boundaries between storage, virtual machines, containers, and the AI node.
+This single-node Proxmox lab runs private photo and document services, monitoring, and home automation. I administer it from Windows 11 through WSL2, which also runs local AI workloads. Production data, Windows backups, and offline host recovery each have a separate storage destination.
 
-## Purpose
+![Homelab architecture showing the WSL workstation, Proxmox services, and three storage destinations](assets/architecture-current.svg)
 
-It provides one documented platform for file services, photo management, document handling, monitoring, home automation, and local AI. Instead of several loosely connected machines, the setup behaves like a small internal service environment that is easier to understand, maintain, and extend.
+Solid arrows show current flows. Dotted arrows show optional expansion. Green dashed arrows show the intended LAN AI serving path from the Media PC; that stack is not currently deployed.
 
-The main design choice is separation of concerns. Core services stay on the Proxmox host, storage stays simple, and AI workloads run on a separate machine so the hypervisor remains focused on infrastructure.
+## Machines and Roles
 
-## Architecture
+| Machine | Role | Status |
+| --- | --- | --- |
+| Windows 11 workstation / WSL2 | Zsh administration, Codex and OpenCode workflows, and CUDA inference with llama.cpp on an RTX 3090 (24 GB VRAM) | In use |
+| WTR Pro / Proxmox VE | Nginx Proxy Manager, Immich, Paperless-ngx, Uptime Kuma, and Homepage in LXCs; Home Assistant OS in a VM | In use |
+| Media PC / Pop!_OS | Media and gaming workstation with an RX 6800 (16 GB VRAM) | In use |
+| Zenbook / Linux Mint and MSI Modern 14 / Omarchy | Separate Linux workstations for development and experimentation, administered from WSL when needed | In use |
+| Raspberry Pi 3B | Lightweight dashboard and LAN device | In use |
 
-![Homelab architecture](assets/architecture.svg)
+The Media PC previously ran a simple LAN AI stack: Ollama for model serving, Open WebUI for browser access, and SearXNG for search. The plan is to bring it back with ROCm as a companion to WSL inference, not a dependency of Proxmox.
 
-The Proxmox host runs Proxmox VE and hosts the main services as LXC containers together with Home Assistant and Frigate. Storage is a two-disk ZFS mirror on Samsung 870 QVO SSDs. The home LAN is provided by Fritz!Box and NextDNS, and management stays on the internal network.
+## Storage and Recovery
 
-The separate Pop!_OS media PC serves Gemma 4 through Ollama, Open WebUI, and SearXNG on the LAN. This keeps local AI workloads off the Proxmox host while still making them available across the home network.
+- **Production SSD mirror:** ZFS on two Samsung 870 QVO SSDs stores service data, scheduled guest archives, and host-configuration backups.
+- **Windows backup HDD mirror:** Windows runs encrypted Restic backups over restricted SFTP to a separate ZFS mirror. Successful jobs report completion. Homepage reads only cached backup ages, without opening the repositories or waking the HDDs.
+- **Removable host recovery:** An encrypted external Restic backup carries selected guest archives, host configuration, and application recovery data. A mirror tolerates a disk failure; the removable copy gives selected data a recovery path outside the host. Both internal mirrors still share the same machine.
 
-## Homepage
+Sample restores are verified by comparing SHA-256 hashes with the originals. The dashboard reports backup freshness, not recoverability.
 
-![Homepage dashboard](assets/homepage.jpg)
+## Administration and Agent Workflow
 
-## Workstation
+WSL is the starting point for maintenance. The Zsh workflow is **local-first**: `agentinit` creates a project-local context, `agentreview` reviews proposed shared changes, `agentupdate` promotes them to the local canonical copy, and `agentrefresh` updates another local project. The reduced profile, `agentinit -nosec`, exports an explicit allowlist; it is not a filesystem security boundary.
 
-The Windows 11 workstation is used for administration through WSL2, with an agent harness, API access, local models, and a shell-based maintenance workflow.
+Git could distribute a deliberately reviewed, reduced context to the other machines. A **planned Gitea instance on Proxmox** would provide a LAN-only remote for that exchange. WSL would publish selected files, and another machine would fetch them explicitly. Neither Gitea nor automatic cross-machine context sync is deployed.
 
-## Core Services
+FRITZ!Box handles routing and DHCP; NextDNS is the upstream DNS service. Nginx Proxy Manager routes internal application traffic. Proxmox administration uses key-only SSH and GUI MFA, with no intentional internet port forwarding. LAN-only access does not imply isolation between guests.
 
-The Proxmox host runs Nginx Proxy Manager, Immich, Paperless-ngx, Uptime Kuma, Homepage, and Beszel in LXC containers. Home Assistant runs as a virtual machine, and Frigate covers the camera and automation side of the stack. The storage layer is a ZFS mirror on two Samsung 870 QVO drives.
-
-The separate Pop!_OS system serves Gemma 4 through Ollama, with Open WebUI and SearXNG as the user-facing layer and search backend.
-
-### Network
-
-- Fritz!Box and NextDNS provide the LAN core
-- Proxmox remains LAN-only
-- Services are exposed through the internal reverse proxy, not the public internet
+Proxmox Backup Server is an optional future guest backup target, not part of the current recovery setup.

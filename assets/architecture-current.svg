@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 1015" role="img" aria-labelledby="title desc">
+<title id="title">Proxmox homelab architecture</title>
+<desc id="desc">Windows and WSL administer a Proxmox host and other LAN devices. Separate storage paths handle production, Windows backups and removable recovery. Dotted connections are planned.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#486789"/></marker><marker id="ai-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#578d76"/></marker></defs>
+<style>
+text{font-family:system-ui,sans-serif;fill:#132b44}.title{font-size:30px;font-weight:750}.section{font-size:14px;font-weight:700;letter-spacing:1.5px}.heading{font-size:17px;font-weight:700}.detail{font-size:14px}.label{font-size:12px;paint-order:stroke;stroke:#f5f8fc;stroke-width:4px;stroke-linejoin:round}.link{fill:none;stroke:#486789;stroke-width:2;marker-end:url(#arrow)}.planned{stroke-dasharray:3 6}
+.link.ai{stroke:#578d76;stroke-width:2.6;stroke-dasharray:10 5;marker-end:url(#ai-arrow)}.ai-label{fill:#12634e}
+</style>
+<rect width="1340" height="1015" rx="20" fill="#f5f8fc"/>
+<rect x="465" y="88" width="350" height="854" rx="14" fill="#e3effc" stroke="#a2bdd6"/>
+<text class="title" x="50" y="54">Proxmox Homelab · Services, Storage &amp; Recovery</text>
+<text class="section" x="50" y="109">WORKSTATION &amp; LAN</text><text class="section" x="485" y="110">WTR PRO · PROXMOX VE</text><text class="section" x="1000" y="109">STORAGE &amp; RECOVERY</text>
+<path class="link" d="M325 152 H485"/>
+<path class="link" d="M325 214 H420 V268 H485"/>
+<path class="link" d="M325 385 H485"/>
+<path class="link" style="marker-end:none" d="M325 180 H440 V385"/>
+<path class="link" d="M640 415 V455"/>
+<path class="link" d="M795 286 H925 V320 H1000"/>
+<path class="link" d="M815 193 H1000"/>
+<path class="link" d="M815 530 H1000"/>
+<path class="link" d="M795 744 H835 V507 H795"/>
+<path class="link" d="M185 845 V905"/>
+<path class="link" d="M185 568 V600"/>
+<path class="link ai" d="M50 658 H12 V229 H50"/>
+<path class="link ai" d="M50 678 H37 V476 H50"/>
+<path class="link" d="M50 183 H25 V420 H50"/>
+<path class="link planned" d="M325 235 H354 V850 H485"/><path class="link planned" style="marker-end:none" d="M325 445 H354 M325 539 H354"/>
+<path class="link planned" d="M485 891 H398 V249 H325"/><path class="link planned" d="M398 472 H325"/><path class="link planned" d="M398 554 H325"/>
+<path class="link planned" d="M815 644 H1000"/>
+<g><rect x="50" y="125" width="275" height="130" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="65" y="150">Windows 11 / WSL2</text><text class="detail" x="65" y="171">Main admin and local AI node</text><text class="detail" x="65" y="192">Zsh · Codex · OpenCode · llama.cpp</text><text class="detail" x="65" y="213">CUDA: RTX 3090 · 24 GB VRAM</text><text class="detail" x="65" y="234">Runs quantized 27B dense models</text></g>
+<g><rect x="50" y="330" width="275" height="170" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="65" y="355">LAN clients &amp; devices</text><text class="detail" x="65" y="376">Zenbook · Linux Mint</text><text class="detail" x="65" y="397">MSI Modern 14 · Omarchy</text><text class="detail" x="65" y="418">Raspberry Pi 3B · dashboard</text></g>
+<g><rect x="50" y="517" width="275" height="51" rx="10" fill="#e7f5ef" stroke="#578d76"/><text class="heading" x="65" y="548">Media PC with Pop!_OS</text></g>
+<g><rect x="50" y="600" width="275" height="100" rx="10" fill="#e7f5ef" stroke="#578d76"/><text class="heading" x="65" y="625">Local AI stack</text><text class="detail" x="65" y="646">Ollama · Open WebUI · SearXNG</text><text class="detail" x="65" y="667">ROCm: RX 6800 · 16 GB VRAM</text><text class="detail" x="65" y="688">Dense or MoE models · LAN serving</text></g>
+<g><rect x="50" y="765" width="275" height="80" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="65" y="790">FRITZ!Box</text><text class="detail" x="65" y="811">WAN boundary · routing · DHCP</text></g>
+<g><rect x="50" y="905" width="275" height="65" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="65" y="930">NextDNS</text><text class="detail" x="65" y="951">Upstream DNS</text></g>
+<g><rect x="485" y="125" width="310" height="70" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="150">Proxmox UI / SSH</text><text class="detail" x="500" y="171">GUI MFA · key-only SSH</text></g>
+<g><rect x="485" y="235" width="310" height="75" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="260">Restricted SFTP</text><text class="detail" x="500" y="281">Windows Restic backup receiver</text></g>
+<g><rect x="485" y="350" width="310" height="65" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="375">Nginx Proxy Manager</text><text class="detail" x="500" y="396">Internal HTTPS reverse proxy</text></g>
+<g><rect x="485" y="455" width="310" height="95" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="480">Application LXCs</text><text class="detail" x="500" y="501">Immich · Paperless-ngx</text><text class="detail" x="500" y="522">Uptime Kuma · Homepage</text></g>
+<g><rect x="485" y="590" width="310" height="72" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="615">Home Assistant OS</text><text class="detail" x="500" y="636">Virtual machine</text></g>
+<g><rect x="485" y="700" width="310" height="65" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="500" y="725">Host-side status cache</text><text class="detail" x="500" y="746">Homepage reads backup ages only</text></g>
+<g><rect x="485" y="830" width="310" height="80" rx="10" fill="#fff8e8" stroke="#977329" stroke-dasharray="3 6"/><text class="heading" x="500" y="855">Git / Local Gitea</text><text class="detail" x="500" y="876">Semi-Automated, reviewed</text><text class="detail" x="500" y="897">context across all devices</text></g>
+<g><rect x="1000" y="140" width="290" height="100" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="1015" y="165">Production SSD mirror</text><text class="detail" x="1015" y="186">ZFS · service data</text><text class="detail" x="1015" y="207">Guest archives · host configuration</text></g>
+<g><rect x="1000" y="270" width="290" height="100" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="1015" y="295">Windows backup HDD mirror</text><text class="detail" x="1015" y="316">Separate ZFS mirror</text><text class="detail" x="1015" y="337">Encrypted Restic repository</text></g>
+<g><rect x="1000" y="470" width="290" height="100" rx="10" fill="#fff" stroke="#829bb6"/><text class="heading" x="1015" y="495">Offline recovery drive</text><text class="detail" x="1015" y="516">Encrypted Restic backup</text><text class="detail" x="1015" y="537">Selected Proxmox recovery data</text></g>
+<g><rect x="1000" y="625" width="290" height="92" rx="10" fill="#fff8e8" stroke="#977329" stroke-dasharray="3 6"/><text class="heading" x="1015" y="650">Proxmox Backup Server</text><text class="detail" x="1015" y="671">Optional guest backup target</text><text class="detail" x="1015" y="692">Placement undecided</text></g>
+<text class="detail" x="485" y="977">Solid: current flow · Dotted: optional · Green dashed: LAN AI · Arrows show flow, not isolation.</text>
+<text class="label" x="365" y="142">Administration</text>
+<text class="label" x="333" y="203">Windows Restic</text>
+<text class="label" x="362" y="374">Internal HTTPS</text>
+<text class="label" x="650" y="443">Proxy</text>
+<text class="label" x="840" y="308">Encrypted backups</text>
+<text class="label" x="840" y="181">Data / archives</text>
+<text class="label" x="820" y="519">Selected recovery data</text>
+<text class="label" x="845" y="741">Backup ages only</text>
+<text class="label" x="198" y="879">DNS upstream</text>
+<text class="label ai-label" x="57" y="721">AI serving on the LAN → WSL and LAN clients</text>
+<text class="label" x="362" y="820">Publish</text>
+<text class="label" x="403" y="880">Fetch</text>
+<text class="label" x="853" y="633">Guest backups</text>
+</svg>
